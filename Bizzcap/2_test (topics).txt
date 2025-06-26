@@ -1,0 +1,141 @@
+2023-09-13T15:30:35.5562328Z Requested labels: ubuntu-latest
+2023-09-13T15:30:35.5562741Z Job defined at: github/explore/.github/workflows/test.yml@refs/pull/3909/merge
+2023-09-13T15:30:35.5562891Z Waiting for a runner to pick up this job...
+2023-09-13T15:30:36.4603177Z Job is waiting for a hosted runner to come online.
+2023-09-13T15:30:40.1453027Z Job is about to start running on the hosted runner: GitHub Actions 156 (hosted)
+2023-09-13T15:30:44.5112352Z Current runner version: '2.309.0'
+2023-09-13T15:30:44.5140402Z ##[group]Operating System
+2023-09-13T15:30:44.5140918Z Ubuntu
+2023-09-13T15:30:44.5141232Z 22.04.3
+2023-09-13T15:30:44.5141755Z LTS
+2023-09-13T15:30:44.5142015Z ##[endgroup]
+2023-09-13T15:30:44.5142475Z ##[group]Runner Image
+2023-09-13T15:30:44.5142850Z Image: ubuntu-22.04
+2023-09-13T15:30:44.5143128Z Version: 20230911.1.0
+2023-09-13T15:30:44.5143648Z Included Software: https://github.com/actions/runner-images/blob/ubuntu22/20230911.1/images/linux/Ubuntu2204-Readme.md
+2023-09-13T15:30:44.5144341Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu22%2F20230911.1
+2023-09-13T15:30:44.5144746Z ##[endgroup]
+2023-09-13T15:30:44.5145107Z ##[group]Runner Image Provisioner
+2023-09-13T15:30:44.5145472Z 2.0.299.1
+2023-09-13T15:30:44.5145731Z ##[endgroup]
+2023-09-13T15:30:44.5146813Z ##[group]GITHUB_TOKEN Permissions
+2023-09-13T15:30:44.5148576Z Actions: read
+2023-09-13T15:30:44.5148910Z Checks: read
+2023-09-13T15:30:44.5149522Z Contents: read
+2023-09-13T15:30:44.5149930Z Deployments: read
+2023-09-13T15:30:44.5150267Z Discussions: read
+2023-09-13T15:30:44.5150565Z Issues: read
+2023-09-13T15:30:44.5150937Z Metadata: read
+2023-09-13T15:30:44.5151207Z Packages: read
+2023-09-13T15:30:44.5151518Z Pages: read
+2023-09-13T15:30:44.5151833Z PullRequests: read
+2023-09-13T15:30:44.5152135Z RepositoryProjects: read
+2023-09-13T15:30:44.5152561Z SecurityEvents: read
+2023-09-13T15:30:44.5152892Z Statuses: read
+2023-09-13T15:30:44.5153172Z ##[endgroup]
+2023-09-13T15:30:44.5156749Z Secret source: None
+2023-09-13T15:30:44.5157376Z Prepare workflow directory
+2023-09-13T15:30:44.5919405Z Prepare all required actions
+2023-09-13T15:30:44.6112749Z Getting action download info
+2023-09-13T15:30:44.8128950Z Download action repository 'actions/checkout@v4' (SHA:3df4ab11eba7bda6032a0b82a6bb43b11571feac)
+2023-09-13T15:30:45.1128458Z Download action repository 'ruby/setup-ruby@v1' (SHA:250fcd6a742febb1123a77a841497ccaa8b9e939)
+2023-09-13T15:30:45.4236209Z Complete job name: test (topics)
+2023-09-13T15:30:45.5431491Z ##[group]Run actions/checkout@v4
+2023-09-13T15:30:45.5431833Z with:
+2023-09-13T15:30:45.5432081Z   fetch-depth: 0
+2023-09-13T15:30:45.5432356Z   repository: github/explore
+2023-09-13T15:30:45.5432855Z   token: ***
+2023-09-13T15:30:45.5433103Z   ssh-strict: true
+2023-09-13T15:30:45.5433385Z   persist-credentials: true
+2023-09-13T15:30:45.5433646Z   clean: true
+2023-09-13T15:30:45.5433909Z   sparse-checkout-cone-mode: true
+2023-09-13T15:30:45.5434197Z   fetch-tags: false
+2023-09-13T15:30:45.5434462Z   show-progress: true
+2023-09-13T15:30:45.5434698Z   lfs: false
+2023-09-13T15:30:45.5434932Z   submodules: false
+2023-09-13T15:30:45.5435207Z   set-safe-directory: true
+2023-09-13T15:30:45.5435460Z ##[endgroup]
+2023-09-13T15:30:45.7881849Z Syncing repository: github/explore
+2023-09-13T15:30:45.7883647Z ##[group]Getting Git version info
+2023-09-13T15:30:45.7884225Z Working directory is '/home/runner/work/explore/explore'
+2023-09-13T15:30:45.7885859Z [command]/usr/bin/git version
+2023-09-13T15:30:45.7957288Z git version 2.42.0
+2023-09-13T15:30:45.7985343Z ##[endgroup]
+2023-09-13T15:30:45.8027649Z Temporarily overriding HOME='/home/runner/work/_temp/3ed23b46-2e3e-4313-8026-f9b9d8085c1e' before making global git config changes
+2023-09-13T15:30:45.8028246Z Adding repository directory to the temporary git global config as a safe directory
+2023-09-13T15:30:45.8028852Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/explore/explore
+2023-09-13T15:30:45.8075159Z Deleting the contents of '/home/runner/work/explore/explore'
+2023-09-13T15:30:45.8091500Z ##[group]Initializing the repository
+2023-09-13T15:30:45.8092170Z [command]/usr/bin/git init /home/runner/work/explore/explore
+2023-09-13T15:30:45.8168407Z hint: Using 'master' as the name for the initial branch. This default branch name
+2023-09-13T15:30:45.8171606Z hint: is subject to change. To configure the initial branch name to use in all
+2023-09-13T15:30:45.8175219Z hint: of your new repositories, which will suppress this warning, call:
+2023-09-13T15:30:45.8178455Z hint: 
+2023-09-13T15:30:45.8181237Z hint: 	git config --global init.defaultBranch <name>
+2023-09-13T15:30:45.8184808Z hint: 
+2023-09-13T15:30:45.8187493Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2023-09-13T15:30:45.8190378Z hint: 'development'. The just-created branch can be renamed via this command:
+2023-09-13T15:30:45.8192965Z hint: 
+2023-09-13T15:30:45.8196378Z hint: 	git branch -m <name>
+2023-09-13T15:30:45.8210127Z Initialized empty Git repository in /home/runner/work/explore/explore/.git/
+2023-09-13T15:30:45.8224667Z [command]/usr/bin/git remote add origin https://github.com/github/explore
+2023-09-13T15:30:45.8263436Z ##[endgroup]
+2023-09-13T15:30:45.8264164Z ##[group]Disabling automatic garbage collection
+2023-09-13T15:30:45.8265985Z [command]/usr/bin/git config --local gc.auto 0
+2023-09-13T15:30:45.8294536Z ##[endgroup]
+2023-09-13T15:30:45.8295204Z ##[group]Setting up auth
+2023-09-13T15:30:45.8300204Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2023-09-13T15:30:45.8328488Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2023-09-13T15:30:45.8755973Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2023-09-13T15:30:45.8802163Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2023-09-13T15:30:45.8962683Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2023-09-13T15:30:45.9000024Z ##[endgroup]
+2023-09-13T15:30:45.9000532Z ##[group]Fetching the repository
+2023-09-13T15:30:45.9014628Z [command]/usr/bin/git -c protocol.version=2 fetch --prune --no-recurse-submodules origin +refs/heads/*:refs/remotes/origin/* +refs/tags/*:refs/tags/* +aefd4d479ab49dec35d5d23cdd7342002c9c67c9:refs/remotes/pull/3909/merge
+2023-09-13T15:30:48.4919625Z From https://github.com/github/explore
+2023-09-13T15:30:48.4920600Z  * [new branch]        gh-pages   -> origin/gh-pages
+2023-09-13T15:30:48.4969994Z  * [new branch]        main       -> origin/main
+2023-09-13T15:30:48.4970449Z  * [new ref]           aefd4d479ab49dec35d5d23cdd7342002c9c67c9 -> pull/3909/merge
+2023-09-13T15:30:48.4971499Z ##[endgroup]
+2023-09-13T15:30:48.4971879Z ##[group]Determining the checkout info
+2023-09-13T15:30:48.4972229Z ##[endgroup]
+2023-09-13T15:30:48.4972566Z ##[group]Checking out the ref
+2023-09-13T15:30:48.4972953Z [command]/usr/bin/git checkout --progress --force refs/remotes/pull/3909/merge
+2023-09-13T15:30:48.6440325Z Note: switching to 'refs/remotes/pull/3909/merge'.
+2023-09-13T15:30:48.6440538Z 
+2023-09-13T15:30:48.6440819Z You are in 'detached HEAD' state. You can look around, make experimental
+2023-09-13T15:30:48.6441255Z changes and commit them, and you can discard any commits you make in this
+2023-09-13T15:30:48.6441630Z state without impacting any branches by switching back to a branch.
+2023-09-13T15:30:48.6441833Z 
+2023-09-13T15:30:48.6442005Z If you want to create a new branch to retain commits you create, you may
+2023-09-13T15:30:48.6442418Z do so (now or later) by using -c with the switch command. Example:
+2023-09-13T15:30:48.6442611Z 
+2023-09-13T15:30:48.6442764Z   git switch -c <new-branch-name>
+2023-09-13T15:30:48.6452072Z 
+2023-09-13T15:30:48.6452258Z Or undo this operation with:
+2023-09-13T15:30:48.6452445Z 
+2023-09-13T15:30:48.6452520Z   git switch -
+2023-09-13T15:30:48.6452650Z 
+2023-09-13T15:30:48.6452866Z Turn off this advice by setting config variable advice.detachedHead to false
+2023-09-13T15:30:48.6453126Z 
+2023-09-13T15:30:48.6453400Z HEAD is now at aefd4d47 Merge d9ca61579ffd94164b1e03e301d04403d6e64723 into 40d426f9aca9697d4c5cb8ca0706ff5c61d0a0b5
+2023-09-13T15:30:48.6454416Z ##[endgroup]
+2023-09-13T15:30:48.6486921Z [command]/usr/bin/git log -1 --format='%H'
+2023-09-13T15:30:48.6512671Z 'aefd4d479ab49dec35d5d23cdd7342002c9c67c9'
+2023-09-13T15:30:48.7070967Z ##[group]Run echo "changed=$(git diff --name-only --diff-filter=ACMRT 40d426f9aca9697d4c5cb8ca0706ff5c61d0a0b5 aefd4d479ab49dec35d5d23cdd7342002c9c67c9 | grep ^topics\/ | xargs)" >> $GITHUB_OUTPUT
+2023-09-13T15:30:48.7071705Z [36;1mecho "changed=$(git diff --name-only --diff-filter=ACMRT 40d426f9aca9697d4c5cb8ca0706ff5c61d0a0b5 aefd4d479ab49dec35d5d23cdd7342002c9c67c9 | grep ^topics\/ | xargs)" >> $GITHUB_OUTPUT[0m
+2023-09-13T15:30:48.7143753Z shell: /usr/bin/bash -e {0}
+2023-09-13T15:30:48.7143988Z ##[endgroup]
+2023-09-13T15:30:48.7490155Z Post job cleanup.
+2023-09-13T15:30:48.8415694Z [command]/usr/bin/git version
+2023-09-13T15:30:48.8465519Z git version 2.42.0
+2023-09-13T15:30:48.8513781Z Temporarily overriding HOME='/home/runner/work/_temp/ea5e5691-8669-4828-9768-2a1056794b4e' before making global git config changes
+2023-09-13T15:30:48.8517644Z Adding repository directory to the temporary git global config as a safe directory
+2023-09-13T15:30:48.8526264Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/explore/explore
+2023-09-13T15:30:48.8573443Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2023-09-13T15:30:48.8615056Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2023-09-13T15:30:48.8875045Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2023-09-13T15:30:48.8890287Z http.https://github.com/.extraheader
+2023-09-13T15:30:48.8900196Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+2023-09-13T15:30:48.8934808Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2023-09-13T15:30:48.9496292Z Cleaning up orphan processes

@@ -1,0 +1,18 @@
+2023-09-13T15:30:34.5737732Z ##[section]Starting: Prepare job test
+2023-09-13T15:30:34.5740906Z Evaluating strategy
+2023-09-13T15:30:34.5755715Z Creating job 'collections'
+2023-09-13T15:30:34.5760191Z Evaluating timeout
+2023-09-13T15:30:34.5760293Z Evaluating cancel timeout
+2023-09-13T15:30:34.5760329Z Evaluating continue on error
+2023-09-13T15:30:34.5760366Z Evaluating target
+2023-09-13T15:30:34.5761509Z Creating job 'topics'
+2023-09-13T15:30:34.5766842Z Evaluating timeout
+2023-09-13T15:30:34.5766937Z Evaluating cancel timeout
+2023-09-13T15:30:34.5766976Z Evaluating continue on error
+2023-09-13T15:30:34.5767040Z Evaluating target
+2023-09-13T15:30:34.5767959Z Creating job 'all'
+2023-09-13T15:30:34.5772829Z Evaluating timeout
+2023-09-13T15:30:34.5772890Z Evaluating cancel timeout
+2023-09-13T15:30:34.5772923Z Evaluating continue on error
+2023-09-13T15:30:34.5772958Z Evaluating target
+2023-09-13T15:30:34.5775698Z ##[section]Finishing: Prepare job test
