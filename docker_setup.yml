@@ -1,0 +1,46 @@
+# docker-compose.yml
+version: '3.9'
+
+services:
+  api:
+    build:
+      context: .
+      dockerfile: ./docker/Dockerfile.api
+    container_name: bizz_api
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/app
+    environment:
+      - PYTHONUNBUFFERED=1
+      - ENV=development
+      - SECRET_KEY=change-me
+
+  ui:
+    build:
+      context: ./lib/ui
+      dockerfile: ../docker/Dockerfile.ui
+    container_name: bizz_ui
+    ports:
+      - "3000:3000"
+    environment:
+      - NEXT_PUBLIC_API_URL=http://localhost:8000
+    depends_on:
+      - api
+
+# Dockerfile.api
+# docker/Dockerfile.api
+FROM python:3.11-slim
+WORKDIR /app
+COPY . /app
+RUN pip install --upgrade pip && pip install fastapi uvicorn pydantic
+CMD ["uvicorn", "main_api:app", "--host", "0.0.0.0", "--port", "8000"]
+
+# Dockerfile.ui
+# docker/Dockerfile.ui
+FROM node:20-alpine
+WORKDIR /app
+COPY . /app
+RUN cd lib/ui && npm install && npm run build
+EXPOSE 3000
+CMD ["npm", "run", "dev", "--prefix", "lib/ui"]
