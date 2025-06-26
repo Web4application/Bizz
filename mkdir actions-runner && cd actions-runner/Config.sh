@@ -1,0 +1,1 @@
+./config.sh --url https://github.com/QUBUHUB/precedent --token BAVRLWLCAXIISAJQSHKNO6LHSUEI2
