@@ -25,3 +25,32 @@ $ pip install -r requirements.txt  # or `poetry install`
 
 # 3) Node/TS deps (if package.json exists)
 $ npm ci
+
+vercel --prod
+
+netlify deploy --build --prod
+
+fly deploy -i ghcr.io/<image>
+
+docker compose -f docker/docker‑compose.prod.yml up -d
+
+pre-commit install
+
+# Build image
+$ docker build -t web4app/bizz:dev .
+
+# Run container
+$ docker run -p 8000:8000 --env-file .env web4app/bizz:dev
+
+# Python API service (FastAPI / Flask)
+$ uvicorn app.main:app --reload --port 8000
+
+# TypeScript micro‑service
+$ npm run dev
+
+# Unified task runner
+$ make dev  # wire both in tmux
+
+python scripts/bizz_cli.py start
+python scripts/bizz_cli.py chat --message "Hello"
+python scripts/bizz_cli.py upload --file path/to/your.txt
