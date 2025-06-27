@@ -54,3 +54,10 @@ $ make dev  # wire both in tmux
 python scripts/bizz_cli.py start
 python scripts/bizz_cli.py chat --message "Hello"
 python scripts/bizz_cli.py upload --file path/to/your.txt
+
+pip install mkdocs-material
+mkdocs serve
+
+poetry install
+poetry run bizz start
+
