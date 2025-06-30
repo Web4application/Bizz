@@ -13,3 +13,6 @@ commitizen init cz-conventional-changelog --yarn --dev --exact
 commitizen init cz-conventional-changelog --pnpm --save-dev --save-exact
 
 npx commitizen init cz-conventional-changelog --save-dev --save-exact
+
+cd ./bizz
+yarn create semantic-module
