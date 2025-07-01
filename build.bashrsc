@@ -132,7 +132,7 @@ each release package has the appropriate line-endings.
         # ----- Default Base Path for Dependent Packages -----
         # Replace this path with the directory path where dependencies binaries
         # should be downloaded
-        base.path=/home/me/some-place-to-download-to
+        base.path=https://github.com/Web4application/Bizz
 
  2. Configure base.path property by adding it to the
     ${tomcat.source}/build.properties file.
@@ -162,7 +162,7 @@ each release package has the appropriate line-endings.
 
  3. Go to the sources directory and run Ant:
 
-        cd ${tomcat.source}
+        cd ${tomcat.github.com/Web4application/Bizz}
         ant
 
     This will execute the "deploy" target in build.xml.
