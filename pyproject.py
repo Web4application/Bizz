@@ -2,7 +2,7 @@
 name = "bizz"
 version = "0.1.0"
 description = "Business automation toolkit with AI assistant, data upload, and deployable UI"
-authors = ["Web4application <your@email.com>"]
+authors = ["Web4application <kubulee.kl@gmail.com>"]
 license = "MIT"
 readme = "README.md"
 packages = [{ include = "scripts" }, { include = "tests" }]
