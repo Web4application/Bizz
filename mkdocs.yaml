@@ -1,0 +1,42 @@
+site_name: Bizz Documentation
+site_description: Developer and deployment guide for the Bizz automation platform
+site_url: https://web4application.github.io/Bizz/
+author: Web4application
+repo_url: https://github.com/Web4application/Bizz
+edit_uri: edit/main/docs/
+
+theme:
+  name: material
+  palette:
+    primary: indigo
+    accent: light blue
+  features:
+    - navigation.tabs
+    - navigation.expand
+    - content.code.copy
+    - content.action.edit
+
+nav:
+  - Home: index.md
+  - Getting Started:
+      - Installation: install.md
+      - Environment Setup: env.md
+  - Features:
+      - Assistant API: assistant.md
+      - Upload API: upload.md
+      - UI Dashboard: dashboard.md
+  - CLI: cli.md
+  - Deployment: deploy.md
+  - Reference:
+      - API Reference: api.md
+      - Docker: docker.md
+      - CI/CD: cicd.md
+  - License: license.md
+
+markdown_extensions:
+  - admonition
+  - codehilite
+  - toc:
+      permalink: true
+  - pymdownx.superfences
+  - pymdownx.details
