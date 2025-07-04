@@ -200,6 +200,59 @@
       closeModal();
     }
   </script>
+  <script src="https://cdn.jsdelivr.net/npm/qrious@4.0.2/dist/qrious.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/ethers@6.9.1/dist/ethers.min.js"></script>
+<script>
+/* ---------- CONFIG ---------- */
+const RPC_URL    = "https://rpc.fadaka.network";       // ⇦ your chain RPC
+const TOKEN_ADDR = "0xYourFadakaTokenAddress";         // ⇦ FDAK proxy / main
+const TOKEN_ABI  = [ /* …ERC‑20 ABI… */ ];             // ⇦ paste ABI JSON
+const API_BASE   = "https://bizz-api.onrender.com";    // ⇦ FastAPI url
+/* ---------- WALLET ---------- */
+async function connectWallet() {
+  if (!window.ethereum) { alert("Metamask not found"); return; }
+  const provider = new ethers.BrowserProvider(window.ethereum);
+  await provider.send("eth_requestAccounts", []);
+  const signer  = await provider.getSigner();
+  const addr    = await signer.getAddress();
+  document.getElementById("walletAddress").value = addr;
+
+  // balance
+  const token   = new ethers.Contract(TOKEN_ADDR, TOKEN_ABI, provider);
+  const rawBal  = await token.balanceOf(addr);
+  const bal     = ethers.formatUnits(rawBal, 18);
+  document.getElementById("walletBalance").innerText = `Balance: ${bal} FDAK`;
+
+  // QR
+  new QRious({ element: qrCanvas, value: addr, size: 150 });
+}
+/* ---------- GPT CHAT ---------- */
+document.querySelector(".chatbot-bubble").onclick = async () => {
+  const userMsg = prompt("Bizz AI 🤖: Ask me anything");
+  if (!userMsg) return;
+  const res = await fetch(`${API_BASE}/chat`, {
+    method: "POST",
+    headers: {"Content-Type":"application/json"},
+    body: JSON.stringify({ message: userMsg })
+  });
+  const data = await res.json();
+  alert(`🤖  ${data.reply}`);
+};
+/* ---------- AUTH ---------- */
+async function submitAuth() {
+  const mode  = document.getElementById("authTitle").innerText.toLowerCase();
+  const email = document.getElementById("email").value;
+  const pass  = document.getElementById("password").value;
+  const res   = await fetch(`${API_BASE}/${mode}`, {
+    method: "POST",
+    headers: {"Content-Type":"application/json"},
+    body: JSON.stringify({ email, password: pass })
+  });
+  const out   = await res.json();
+  alert(out.message || out.detail || "Done");
+  closeModal();
+}
+</script>
 
 </body>
 </html>
