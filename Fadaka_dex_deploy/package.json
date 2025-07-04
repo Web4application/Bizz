@@ -1,0 +1,13 @@
+{
+  "name": "fadaka-dex-deploy",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "test": "npx hardhat test",
+    "deploy:fadaka": "npx hardhat run scripts/deploy.js --network fadaka"
+  },
+  "devDependencies": {
+    "@nomicfoundation/hardhat-toolbox": "^2.0.0",
+    "hardhat": "^2.22.0"
+  }
+}
