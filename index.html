@@ -132,6 +132,13 @@
     <button onclick="connectWallet()">Connect</button>
     <p id="walletBalance">Balance: 0 FDAK</p>
   </section>
+<!-- ──────────── TOKEN SWAP ──────────── -->
+<section class="wallet" style="margin-top:2rem;">
+  <h3>🔄 Token Swap</h3>
+  <input type="number" id="swapAmount" placeholder="Amount FDAK" step="0.0001"/>
+  <button onclick="swapTokens()">Swap FDAK → <span id="pairTicker">FX</span></button>
+  <p id="swapStatus"> </p>
+</section>
 
   <section class="qr">
     <h3>📸 Wallet QR Code</h3>
@@ -237,6 +244,34 @@ document.querySelector(".chatbot-bubble").onclick = async () => {
   });
   const data = await res.json();
   alert(`🤖  ${data.reply}`);
+  /* ---------- TOKEN SWAP ---------- */
+const SWAP_ROUTER_ADDR = "0xSwapRouterAddress";      // ⇦ fill
+const PAIR_TOKEN_ADDR  = "0xPairTokenAddress";       // ⇦ fill
+const ROUTER_ABI       = [                           // ⇦ fill
+  "function swap(uint256 amountIn) external returns (uint256)"
+];
+
+document.getElementById("pairTicker").textContent = "FX"; // change to pair‑symbol
+
+async function swapTokens() {
+  const amt = document.getElementById("swapAmount").value;
+  if (!window.ethereum) { alert("Metamask not found"); return; }
+  const provider = new ethers.BrowserProvider(window.ethereum);
+  const signer   = await provider.getSigner();
+  const router   = new ethers.Contract(SWAP_ROUTER_ADDR, ROUTER_ABI, signer);
+
+  try {
+    document.getElementById("swapStatus").innerText = "⏳ Waiting for signature…";
+    const tx = await router.swap(ethers.parseUnits(amt, 18));
+    document.getElementById("swapStatus").innerText = "📝 Tx sent: " + tx.hash;
+    await tx.wait();
+    document.getElementById("swapStatus").innerText = "✅ Swap confirmed!";
+  } catch (e) {
+    console.error(e);
+    document.getElementById("swapStatus").innerText = "❌ Error: " + (e.reason || e.message);
+  }
+}
+
 };
 /* ---------- AUTH ---------- */
 async function submitAuth() {
