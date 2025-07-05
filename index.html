@@ -1,191 +1,45 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Bizz | Web4 Business AI</title>
+  <meta charset="UTF-8">
+  <title>Swift Beta Wallet</title>
   <style>
-    /* ---------- BASIC STYLES (unchanged) ---------- */
-    body{margin:0;font-family:'Segoe UI',sans-serif;background:#0d1117;color:#f0f6fc;display:flex;flex-direction:column;align-items:center}
-    h1{font-size:2.8rem;color:#58a6ff;margin-top:2rem}.tagline{color:#8b949e;margin-bottom:2rem}
-    .loader{border:6px solid #ccc;border-top:6px solid #58a6ff;border-radius:50%;width:50px;height:50px;animation:spin 1s linear infinite;margin-bottom:2rem}@keyframes spin{to{transform:rotate(360deg)}}
-    .features{display:flex;flex-wrap:wrap;justify-content:center;gap:1.5rem;max-width:1000px;padding:1rem}.card{background:#161b22;padding:1.5rem;border-radius:1rem;box-shadow:0 0 10px #0d1117;width:260px}.card h3{color:#58a6ff}
-    .panel{margin-top:2rem;padding:1rem;background:#161b22;border-radius:1rem;width:90%;max-width:500px;text-align:center}
-    input,button{padding:.6rem;margin:.5rem;border:none;border-radius:8px}button{background:#238636;color:#fff;cursor:pointer}
-    .modal{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.8);justify-content:center;align-items:center}
-    .modal-content{background:#161b22;padding:2rem;border-radius:1rem;text-align:center;width:300px}
-    .chatbot-bubble{position:fixed;bottom:20px;right:20px;background:#238636;padding:1rem;border-radius:50%;cursor:pointer;box-shadow:0 0 10px #000}
+    body {
+      background-color: #0f172a;
+      color: #f8fafc;
+      font-family: 'Arial', sans-serif;
+      text-align: center;
+      padding: 2rem;
+    }
+    .card {
+      background: #1e293b;
+      border-radius: 12px;
+      padding: 2rem;
+      max-width: 500px;
+      margin: 2rem auto;
+      box-shadow: 0 0 12px rgba(0,0,0,0.2);
+    }
+    button {
+      background-color: #10b981;
+      border: none;
+      color: white;
+      padding: 0.75rem 1.5rem;
+      font-size: 1rem;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #059669;
+    }
   </style>
 </head>
 <body>
+  <div id="root"></div>
 
-  <h1>🚀 Bizz</h1>
-  <p class="tagline">AI‑powered Web4 Business Dashboard</p>
-  <div class="loader"></div>
-
-  <!-- ---------- FEATURE CARDS ---------- -->
-  <section class="features">
-    <div class="card"><h3>📊 Analytics</h3><p>Live trends & AI insights</p></div>
-    <div class="card"><h3>🧠 GPT Automation</h3><p>Smart business workflows</p></div>
-    <div class="card"><h3>🔐 Blockchain</h3><p>FDAK token + secure wallets</p></div>
-    <div class="card"><h3>⚙️ DevOps</h3><p>Deploy, scan & certify apps</p></div>
-  </section>
-
-  <!-- ---------- WALLET ---------- -->
-  <section class="panel">
-    <h3>🦊 Fadaka Wallet</h3>
-    <input type="text" id="walletAddress" placeholder="0x…" />
-    <button onclick="connectWallet()">Connect</button>
-    <p id="walletBalance">Balance: 0 FDAK</p>
-  </section>
-
-  <!-- ---------- TOKEN SWAP ---------- -->
-  <section class="panel">
-    <h3>🔄 Token Swap</h3>
-    <input type="number" id="swapAmount" placeholder="Amount FDAK" step="0.0001"/>
-    <button onclick="swapTokens()">Swap FDAK → <span id="pairTicker">FX</span></button>
-    <p id="swapStatus"> </p>
-  </section>
-
-  <!-- ---------- FAUCET ---------- -->
-  <section class="panel">
-    <h3>🚰 Faucet</h3>
-    <select id="faucetToken">
-      <option value="FDAK">FDAK</option>
-      <option value="FX">FX</option>
-    </select>
-    <button onclick="claimFaucet()">Claim 1 000</button>
-    <p id="faucetStatus"> </p>
-  </section>
-
-  <!-- ---------- QR ---------- -->
-  <section class="panel">
-    <h3>📸 Wallet QR Code</h3>
-    <canvas id="qrCanvas"></canvas>
-  </section>
-
-  <!-- ---------- AUTH ---------- -->
-  <section class="panel">
-    <h3>🔐 Login/Register</h3>
-    <button onclick="openModal()">Open Auth Modal</button>
-  </section>
-
-  <footer style="margin-top:2rem;color:#6e7681">© 2025 Bizz by Web4Application 🔗</footer>
-
-  <!-- ---------- AUTH MODAL ---------- -->
-  <div class="modal" id="authModal">
-    <div class="modal-content">
-      <h3 id="authTitle">Login</h3>
-      <input type="email" id="email" placeholder="Email"/><br/>
-      <input type="password" id="password" placeholder="Password"/><br/>
-      <button onclick="submitAuth()">Submit</button>
-      <p style="color:#8b949e;cursor:pointer" onclick="toggleAuth()">Switch</p>
-      <button onclick="closeModal()">Close</button>
-    </div>
-  </div>
-
-  <div class="chatbot-bubble" title="Chat with Bizz AI 🤖">💬</div>
-
-  <!-- ---------- LIBS ---------- -->
-  <script src="https://cdn.jsdelivr.net/npm/qrious@4.0.2/dist/qrious.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/ethers@6.9.1/dist/ethers.min.js"></script>
-
-  <!-- ---------- MAIN SCRIPT ---------- -->
-  <script>
-  /* ---------- CONFIG (➡️ TODO: fill real values) ---------- */
-  const RPC_URL        = "https://rpc.fadaka.network";
-  const TOKEN_ADDR     = "0xYourFadakaTokenAddress";          // FDAK
-  const TOKEN_ABI      = [/* …ERC‑20 ABI… */];                // FDAK ABI
-  const API_BASE       = "https://bizz-api.onrender.com";     // FastAPI base
-
-  const SWAP_ROUTER    = "0xSwapRouterAddress";               // ➡️ TODO
-  const ROUTER_ABI     = ["function swap(uint256) external"]; // minimal
-
-  const FAUCET_ADDRS   = {                                    // ➡️ TODO
-    FDAK: "0xFaucetFDAK",
-    FX  : "0xFaucetFX"
-  };
-  const FAUCET_ABI     = ["function claim() external"];
-
-  /* ---------- GLOBALS ---------- */
-  let provider, signer;
-
-  /* ---------- WALLET CONNECT ---------- */
-  async function connectWallet(){
-    if(!window.ethereum){ alert("Metamask not found"); return; }
-    provider = new ethers.BrowserProvider(window.ethereum);
-    await provider.send("eth_requestAccounts",[]);
-    signer  = await provider.getSigner();
-    const addr = await signer.getAddress();
-    walletAddress.value = addr;
-
-    // FDAK balance
-    const token  = new ethers.Contract(TOKEN_ADDR,TOKEN_ABI,provider);
-    const balWei = await token.balanceOf(addr);
-    walletBalance.textContent = `Balance: ${ethers.formatUnits(balWei,18)} FDAK`;
-
-    // QR
-    new QRious({element:qrCanvas,value:addr,size:150});
-  }
-
-  /* ---------- TOKEN SWAP ---------- */
-  async function swapTokens(){
-    if(!signer){ alert("Connect wallet first"); return; }
-    const amt = swapAmount.value;
-    if(!amt){ alert("Enter amount"); return; }
-    const router = new ethers.Contract(SWAP_ROUTER,ROUTER_ABI,signer);
-    swapStatus.textContent = "⏳ Waiting for signature…";
-    try{
-      const tx=await router.swap(ethers.parseUnits(amt,18));
-      swapStatus.textContent = `📝 Tx sent: ${tx.hash}`;
-      await tx.wait();
-      swapStatus.textContent = "✅ Swap confirmed!";
-    }catch(e){
-      swapStatus.textContent = `❌ ${e.reason||e.message}`;
-    }
-  }
-
-  /* ---------- FAUCET ---------- */
-  async function claimFaucet(){
-    if(!signer){ alert("Connect wallet first"); return; }
-    const symbol = faucetToken.value;
-    const faucet = new ethers.Contract(FAUCET_ADDRS[symbol],FAUCET_ABI,signer);
-    faucetStatus.textContent = "⏳ Claiming…";
-    try{
-      const tx=await faucet.claim();
-      faucetStatus.textContent = `📝 Tx: ${tx.hash}`;
-      await tx.wait();
-      faucetStatus.textContent = `✅ 1 000 ${symbol} sent!`;
-    }catch(e){
-      faucetStatus.textContent = `❌ ${e.reason||e.message}`;
-    }
-  }
-
-  /* ---------- GPT CHAT ---------- */
-  document.querySelector(".chatbot-bubble").onclick = async ()=>{
-    const q = prompt("Bizz AI 🤖 – ask me anything:");
-    if(!q) return;
-    const r = await fetch(`${API_BASE}/chat`,{
-      method:"POST",headers:{"Content-Type":"application/json"},
-      body:JSON.stringify({message:q})
-    }).then(r=>r.json());
-    alert("🤖 "+(r.reply||"No response"));
-  };
-
-  /* ---------- AUTH ---------- */
-  function openModal(){ authModal.style.display="flex"; }
-  function closeModal(){ authModal.style.display="none"; }
-  function toggleAuth(){ authTitle.textContent = authTitle.textContent==="Login"?"Register":"Login"; }
-
-  async function submitAuth(){
-    const mode = authTitle.textContent.toLowerCase();
-    const email=emailInput.value, pass=passwordInput.value;
-    const r = await fetch(`${API_BASE}/${mode}`,{
-      method:"POST",headers:{"Content-Type":"application/json"},
-      body:JSON.stringify({email,password:pass})
-    }).then(r=>r.json());
-    alert(r.message||r.detail||"Done"); closeModal();
-  }
-  </script>
+  <script src="react.development.js"></script>
+  <script src="react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script type="text/babel" src="app.js"></script>
 </body>
 </html>
