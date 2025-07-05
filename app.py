@@ -9,7 +9,6 @@ from passlib.context import CryptContext
 from datetime import datetime, timedelta
 from sqlalchemy.orm import Session
 import openai
-
 from database import SessionLocal, engine, Base
 from models import User, ChatMessage
 
