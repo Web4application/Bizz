@@ -1,0 +1,6 @@
+name: 📱 iOS Crash Report
+description: Report a crash that occurred on iOS, especially related to app startup or watchdog terminations like 8BADF00D
+labels: ["bug", "ios", "crash"]
+
+body:
+...
