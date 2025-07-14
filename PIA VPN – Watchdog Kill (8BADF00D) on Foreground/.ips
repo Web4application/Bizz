@@ -1,0 +1,29 @@
+🔖 Crash Report for PIA VPN app (v3.22.0, build 20033)
+
+**Bundle ID:** com.privateinternetaccess.ios.PIA-VPN  
+**App Version:** 3.22.0 (Build 20033)  
+**iOS Version:** iOS 16.3.1 (20D67)  
+**Device Model:** iPhone11,8 (iPhone XR)  
+**Crash Type:** SIGKILL – EXC_CRASH  
+**Termination Reason:** scene-update watchdog transgression (++ took >10s)  
+**Crash Log:** https://github.com/QUBUHUB/kubucoinasset/blob/1d5b2a4e1e4037a1e0adab0241bd07b6555e6207/PIA%20VPN-2023-09-04-161226.ips
+
+**Description:**
+App entered foreground or resumed, but did not render or respond within the 10-second scene update window. Watchdog triggered a forced kill (`0x8BADF00D`). Likely due to heavy main-thread processing during launch or reactivation—common in VPN initialisation.
+
+**Suspected Root Causes:**
+- Blocking network/VPN init on UI/main thread  
+- Heavy synchronous code in scene lifecycle callbacks  
+- Startup deadlock or long tasks during `sceneDidBecomeActive()`
+
+**Steps to reproduce (if known):**
+1. Launch PIA VPN  
+2. Wait for UI to appear  
+3. App freezes and gets killed after ~10 seconds
+
+**Attachments/Logs:**
+Crash `.ips` available above.
+
+---
+
+Please use the repository issue form template when filing similar reports.
