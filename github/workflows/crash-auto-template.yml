@@ -1,0 +1,22 @@
+name: Auto-Format iOS Crash Issues
+
+on:
+  issues:
+    types: [opened]
+
+jobs:
+  crash_template:
+    runs-on: ubuntu-latest
+    if: contains(github.event.issue.body, 'bundle-id:')
+    steps:
+      - uses: actions/checkout@v4
+      - name: Apply iOS Crash Label
+        uses: actions-ecosystem/action-add-labels@v1
+        with:
+          labels: bug, ios, crash
+      - name: Comment Template Info
+        uses: peter-evans/create-or-update-comment@v5
+        with:
+          issue-number: ${{ github.event.issue.number }}
+          body: |
+            🛠️ Thanks! If you have a full crash log `.ips` in a repository (like the KubuCoinAsset link above), please attach it below or reference it here so we can cross-link and triage. See template guidance above.
