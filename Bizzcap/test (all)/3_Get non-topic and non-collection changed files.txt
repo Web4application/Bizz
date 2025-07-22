@@ -1,4 +1,0 @@
-2023-09-13T15:30:49.2434881Z ##[group]Run echo "changed=$(git diff --name-only --diff-filter=ACMRT 40d426f9aca9697d4c5cb8ca0706ff5c61d0a0b5 aefd4d479ab49dec35d5d23cdd7342002c9c67c9 | grep -ve '^topics\/' -ve '^collections\/' | xargs)" >> $GITHUB_OUTPUT
-2023-09-13T15:30:49.2435712Z [36;1mecho "changed=$(git diff --name-only --diff-filter=ACMRT 40d426f9aca9697d4c5cb8ca0706ff5c61d0a0b5 aefd4d479ab49dec35d5d23cdd7342002c9c67c9 | grep -ve '^topics\/' -ve '^collections\/' | xargs)" >> $GITHUB_OUTPUT[0m
-2023-09-13T15:30:49.2498500Z shell: /usr/bin/bash -e {0}
-2023-09-13T15:30:49.2498780Z ##[endgroup]
