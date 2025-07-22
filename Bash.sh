@@ -45,3 +45,30 @@ npx commitizen init cz-conventional-changelog --save-dev --save-exact
 
 cd ./bizz
 yarn create semantic-module
+
+# 1) Clone and enter the project
+$ git clone https://github.com/Web4application/Bizz.git
+$ cd Bizz
+
+# 2) Python deps – create & activate venv
+$ python -m venv .venv && source .venv/bin/activate
+$ pip install -U pip
+$ pip install -r requirements.txt  # or `poetry install`
+
+# 3) Node/TS deps (if package.json exists)
+$ npm ci
+
+# Python API service (FastAPI / Flask)
+$ uvicorn app.main:app --reload --port 8000
+
+# TypeScript micro‑service
+$ npm run dev
+
+# Unified task runner
+$ make dev  # wire both in tmux
+
+# Build image
+$ docker build -t web4app/bizz:dev .
+
+# Run container
+$ docker run -p 8000:8000 --env-file .env web4app/bizz:dev
