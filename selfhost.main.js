@@ -30,5 +30,5 @@ app.use((err, req, res, next) => {
 
 // Start server
 app.listen(PORT, () => {
-  console.log(`Self-hosted server running at http://localhost:${8080}`);
+  console.log(`Self-hosted server running at http://localhost:${8000}`);
 });
