@@ -1,24 +1,33 @@
----
+
 ## Bizz
 
  ## – Short elevator‑pitch for what Bizz does in a single sentence.**
 
 - Example: *Business‑grade automation toolkit that combines Python data pipelines, TypeScript micro‑services and shell utilities into a single deployable stack.*
 
----
 
 ## Table of Contents
 
 1. [Features](#features)
+
 2. [Tech Stack](#tech-stack)
+
 3. [Project Structure](#project-structure)
+
 4. [Prerequisites](#prerequisites)
+
 5. [Local Installation](#local-installation)
+
 6. [Running Locally](#running-locally)
+
 7. [Docker Usage](#docker-usage)
+
 8. [CI / CD](#cicd)
+
 9. [Deployment Guides](#deployment-guides)
+
 10. [Contributing](#contributing)
+
 11. [License](#license)
 
 ---
