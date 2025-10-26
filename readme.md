@@ -1,10 +1,9 @@
-# Bizz
+---
+## Bizz
 
-> **TODO – Short elevator‑pitch for what Bizz does in a single sentence.**
->
-> Example: *Business‑grade automation toolkit that combines Python data pipelines, TypeScript micro‑services and shell utilities into a single deployable stack.*
+ ## – Short elevator‑pitch for what Bizz does in a single sentence.**
 
-&#x20;
+- Example: *Business‑grade automation toolkit that combines Python data pipelines, TypeScript micro‑services and shell utilities into a single deployable stack.*
 
 ---
 
@@ -176,7 +175,6 @@ Distributed under the MIT License. See [`LICENSE`](LICENSE) for more information
 
 ## Maintainers
 
-- **Web4application** – [your@email.com](mailto\:your@email.com)
+- **Web4application** – [bizzapp.com](mailto\:kubulee.kl@gmail.com)
 
 Feel free to reach out through issues or discussions.
-
