@@ -4,7 +4,6 @@
 
 #import <EarlGreyTest/EarlGrey.h>
 #import <XCTest/XCTest.h>
-
 #import "AppDelegate.h"
 #import "FullScreenViewController.h"
 
